@@ -21,7 +21,7 @@
         <li>Price: @Model.Price</li>
     </ul>
 
-    <form method="post" asp-page="/Cart">
+    <form method="post" class="special" asp-page="/Cart">
 
         @*this somehow passes the model to the page? or maybe just passes the book*@
         <input type="hidden" asp-for="@Model.BookID" />

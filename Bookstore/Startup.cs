@@ -66,17 +66,23 @@ namespace Bookstore
 
             app.UseEndpoints(endpoints =>
             {
-
-                endpoints.MapControllerRoute("categorypage", "{category}/Page{pageNum}", new { Controller = "Home", action = "Index" });
+                // Place endpoints in the order you want the system to check
+                endpoints.MapControllerRoute("typepage",
+                    "{category}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index" });
 
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "Page{pageNum}",
-                    defaults: new { Controller = "Home", action = "index" });
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
 
-                endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "Index", pageNum = 1 });
+                endpoints.MapControllerRoute("category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

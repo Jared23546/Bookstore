@@ -34,7 +34,6 @@ namespace Bookstore.Controllers
             {
                 Books = repo.Books
                 .Where(p => p.Category == category || category == null)
-                .OrderBy(p => p.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
