@@ -13,27 +13,37 @@ namespace Bookstore.Controllers
 {
     public class HomeController : Controller
     {
-        private BookstoreContext context { get; set; }
-
-        public HomeController(BookstoreContext temp)
+        private IBookstoreRepository repo;
+        public HomeController(IBookstoreRepository temp)
         {
-            context = temp;
+            repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        //private BookstoreContext context { get; set; }
+
+        //public HomeController(BookstoreContext temp)
+        //{
+        //    context = temp;
+        //}
+
+        public IActionResult Index(string category, int pageNum = 1)
         {
             int pageSize = 5;
 
             var x = new BookViewModel
             {
-                Books = context.Books
+                Books = repo.Books
+                .Where(p => p.Category == category || category == null)
                 .OrderBy(p => p.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = context.Books.Count(),
+                    TotalNumBooks = (category == null
+                                     ? repo.Books.Count()
+                                     : repo.Books.Where(x=>x.Category == category).Count()),
+
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
                 }

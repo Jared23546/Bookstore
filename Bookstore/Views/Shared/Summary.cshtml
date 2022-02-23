@@ -1,0 +1,37 @@
+﻿
+@{
+}
+@model Book
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-light p-1">
+        <h4>@Model.Title</h4>
+        <span class="badge bg-info" style="float:right">
+            ISBN: @Model.ISBN
+        </span>
+    </div>
+
+
+    <ul>
+        <li>Author: @Model.Author</li>
+        <li>Publisher: @Model.Publisher</li>
+
+        <li>Classification: @Model.Classification</li>
+        <li>Category: @Model.Category</li>
+        <li>Number of pages: @Model.PageCount</li>
+        <li>Price: @Model.Price</li>
+    </ul>
+
+    <form method="post" asp-page="/Cart">
+
+        @*this somehow passes the model to the page? or maybe just passes the book*@
+        <input type="hidden" asp-for="@Model.BookID" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
+        </span>
+
+    </form>
+
+</div>
+
+
