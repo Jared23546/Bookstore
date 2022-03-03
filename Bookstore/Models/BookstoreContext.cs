@@ -16,5 +16,6 @@ namespace Bookstore.Models
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Checkout> checkouts { get; set; }
     }
 }

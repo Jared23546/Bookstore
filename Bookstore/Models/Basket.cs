@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Bookstore.Models
@@ -11,7 +12,7 @@ namespace Bookstore.Models
 
 
         //add a book to a list of books
-        public void AddItem(Book bok, int qty)
+        public virtual void AddItem(Book bok, int qty)
         {
             BasketLineItem line = Items
                 .Where(b => b.Book.BookID == bok.BookID)
@@ -31,6 +32,15 @@ namespace Bookstore.Models
             }
         }
 
+        public virtual void RemoveItem (Book bok)
+        {
+            Items.RemoveAll(x => x.Book.BookID == bok.BookID);
+        }
+
+        public virtual void ClearCart ()
+        {
+            Items.Clear();
+        }
 
         public double CalculateTotal()
         {
@@ -44,6 +54,7 @@ namespace Bookstore.Models
 
     public class BasketLineItem
     {
+        [Key]
         public int LineID { get; set; }
         public Book Book { get; set; }
         public int Quantity { get; set; }
