@@ -1,13 +1,13 @@
 ﻿@page "/admin/purchases"
-<h1>hi</h1>
-@inherits OwningComponentBase<ICheckoutRepository>
 
-<PurchaseTable TableTitle="Uncollected Purchases" checkouts="UncollectedPurchases"
+@inherits OwningComponentBase<ICheckoutRepository>
+<h1>hi</h1>
+@*<PurchaseTable TableTitle="Uncollected Purchases" checkouts="UncollectedPurchases"
                ButtonLabel="Collected" PurchaseSelected="CollectPurchase"></PurchaseTable>
 <PurchaseTable TableTitle="Collected Purchases" checkouts="CollectedPurchases"
                ButtonLabel="Reset" PurchaseSelected="ResetPurchase"></PurchaseTable>
 
-<button class="btn btn-info" @onclick="@(x=>UpdateData())">Refresh Data</button>
+<button class="btn btn-info" @onclick="@(x=>UpdateData())">Refresh Data</button>*@
 @code {
     public ICheckoutRepository repo => Service;
     public IEnumerable<Checkout> AllPurchases { get; set; }
