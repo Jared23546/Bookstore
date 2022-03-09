@@ -68,6 +68,7 @@ namespace Bookstore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("BookID");
@@ -92,6 +93,9 @@ namespace Bookstore.Migrations
 
                     b.Property<string>("Anonymous")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("CheckoutRecieved")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("City")
                         .IsRequired()

@@ -2,6 +2,8 @@
 using System.Linq;
 using Bookstore.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Bookstore.Controllers
 {
@@ -9,7 +11,8 @@ namespace Bookstore.Controllers
     {
 
         private ICheckoutRepository repo { get; set; }
-        public Basket basket { get; set; }
+        private Basket basket { get; set; }
+
         public CheckoutController (ICheckoutRepository temp, Basket b)
         {
             repo = temp;
@@ -23,7 +26,7 @@ namespace Bookstore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(Checkout checkout)
+        public IActionResult Checkout (Checkout checkout)
         {
             if (basket.Items.Count() == 0)
             {

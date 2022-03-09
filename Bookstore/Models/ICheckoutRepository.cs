@@ -3,14 +3,14 @@ using System.Linq;
 
 namespace Bookstore.Models
 {
-    public class ICheckoutRepository
+    public interface ICheckoutRepository
     {
         public IQueryable<Checkout> Checkout { get; }
 
-        public void SaveCheckout(Checkout checkout)
-        {
+        void SaveCheckout(Checkout checkout);
+        
             
-        }
+        
     }
 }
  

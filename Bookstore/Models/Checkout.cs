@@ -38,6 +38,6 @@ namespace Bookstore.Models
         public string Anonymous { get; set; }
 
         [BindNever]
-        public bool CheckoutRecieved { get; set; }
+        public bool CheckoutRecieved { get; set; } = false;
     }
 }

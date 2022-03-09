@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bookstore.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20220308040353_addrecievedfield")]
-    partial class addrecievedfield
+    [Migration("20220309213935_testy")]
+    partial class testy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,7 @@ namespace Bookstore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("BookID");
@@ -94,6 +95,9 @@ namespace Bookstore.Migrations
 
                     b.Property<string>("Anonymous")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("CheckoutRecieved")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("City")
                         .IsRequired()

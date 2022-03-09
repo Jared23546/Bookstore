@@ -2,11 +2,29 @@
 
 namespace Bookstore.Migrations
 {
-    public partial class AddCheckoutsTable : Migration
+    public partial class testy : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
+            migrationBuilder.CreateTable(
+                name: "Books",
+                columns: table => new
+                {
+                    BookID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(nullable: false),
+                    Author = table.Column<string>(nullable: true),
+                    Publisher = table.Column<string>(nullable: true),
+                    ISBN = table.Column<string>(nullable: true),
+                    Classification = table.Column<string>(nullable: true),
+                    Category = table.Column<string>(nullable: true),
+                    PageCount = table.Column<int>(nullable: false),
+                    Price = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Books", x => x.BookID);
+                });
 
             migrationBuilder.CreateTable(
                 name: "checkouts",
@@ -22,7 +40,8 @@ namespace Bookstore.Migrations
                     State = table.Column<string>(nullable: false),
                     Zip = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: false),
-                    Anonymous = table.Column<string>(nullable: true)
+                    Anonymous = table.Column<string>(nullable: true),
+                    CheckoutRecieved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

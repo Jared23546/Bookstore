@@ -12,7 +12,9 @@ namespace Bookstore.Models
             context = temp;
         }
 
-        public IQueryable<Checkout> Checkouts => context.checkouts.Include(x => x.Lines).ThenInclude(x=>x.Book);
+        public IQueryable<Checkout> Checkout => context.checkouts.Include(x => x.Lines).ThenInclude(x=>x.Book);
+
+        
 
         public void SaveCheckout(Checkout checkout)
         {
