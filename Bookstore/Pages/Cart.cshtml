@@ -6,14 +6,14 @@
 
 <h2>Your Cart</h2>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped table-dark ">
 
     <thead>
         <tr>
             <th>Book</th>
             <th>Quantity</th>
             <th>Cost</th>
-            <th>Subtotal</th>
+            <th colspan="2">Subtotal</th>
         </tr>
     </thead>
 
@@ -40,7 +40,7 @@
     <tfoot>
         <tr>
             <td colspan="3">Total:</td>
-            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+            <td colspan="2">@Model.basket.CalculateTotal().ToString("c")</td>
         </tr>
     </tfoot>
 </table>
