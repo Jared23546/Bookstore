@@ -8,6 +8,8 @@ namespace Bookstore.Models
         [Key]
         [Required]
         public int BookID { get; set; }
+
+        [Required]
         public string Title { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }
@@ -15,6 +17,7 @@ namespace Bookstore.Models
         public string Classification { get; set; }
         public string Category { get; set; }
         public int PageCount { get; set; }
+        [Required]
         public float Price { get; set; }
     }
 }
