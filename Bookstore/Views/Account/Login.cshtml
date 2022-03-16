@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model LoginModel
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Water Project Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="bg-dark tact-white p-2">
+        <span class="navbar-brand m-1-2">Bookstore</span>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <form method="post" asp-controller="Account" asp-action="Login">
+        @*<div class="form-group">
+            <label asp-for="Username">User name:</label>
+            <input asp-for="Username" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password">Password:</label>
+            <input asp-for="Password" class="form-control" type="password" />
+        </div>*@
+
+        @*I added floating labels here so that it looks nice*@
+        <div class="form-floating mb-3">
+            <input asp-for="Username" class="form-control" id="floatingInput" placeholder="Admin">
+            <label asp-for="Username" for="floatingInput">User name</label>
+        </div>
+        <div class="form-floating">
+            <input asp-for="Password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label asp-for="Password" for="floatingPassword">Password</label>
+        </div>
+        <button class="btn-primary btn" type="submit">Log In</button>
+
+        <input type="hidden" asp-for="ReturnUrl" />
+    </form>
+</body>
+</html>
